@@ -4,19 +4,64 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean id="embeddedMessageSender" class="SpringInAction.components.EmbeddedMessageSender" scope="prototype" init-method="" destroy-method="">
+       <bean id="embeddedMessageSender" class="SpringInAction.components.EmbeddedMessageSender" scope="prototype" init-method="sendFiveMessages">
+           <property name="brokerService" ref="brokerService"/>
            <property name="brokerName" value="henry"/>
            <property name="queueName" value="SEND_QUEUE"/>
        </bean>
 
-       <bean id="embeddedMessageSaver" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+       <bean id="embeddedMessageSaver0" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="getFiveMessages">
            <property name="brokerName" value="henry"/>
            <property name="queueName" value="SEND_QUEUE"/>
        </bean>
 
-       <bean id="brokerService" class="org.apache.activemq.broker.BrokerService">
-           <property name="brokerName" value="henry"/>
-       </bean>
+      <bean id="embeddedMessageSaver1" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver2" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver3" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver4" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver5" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver6" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver7" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver8" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="embeddedMessageSaver9" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+        <property name="brokerName" value="henry"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+
+       <bean id="brokerService" class="org.apache.activemq.broker.BrokerService"/>
 
 
  </beans>

@@ -1,6 +1,7 @@
 package SpringInAction.components;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.broker.BrokerService;
 
 import javax.jms.*;
 import java.text.DateFormat;
@@ -8,11 +9,15 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EmbeddedMessageSaver extends Thread {
+
+
+
     // Адрес брокера
     private String brokerName;
 
     // Имя очереди
     private String queueName;
+
 
     public String getBrokerName() {
         return brokerName;
@@ -30,9 +35,10 @@ public class EmbeddedMessageSaver extends Thread {
         this.queueName = queueName;
     }
 
-    public void getFiveMessages() {
+    public synchronized void getFiveMessages() {
 
         try {
+
             DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
             ConnectionFactory confactory = new ActiveMQConnectionFactory("vm://" + brokerName);
@@ -66,9 +72,9 @@ public class EmbeddedMessageSaver extends Thread {
 
             System.out.println("End recieve: " + dateFormat.format(new Date()));
             connection.close();
-        } catch (JMSException je) {
+        } catch (Exception e) {
             System.out.println("Ошибка сообщения: ");
-            je.printStackTrace();
+            e.printStackTrace();
         }
 
     }

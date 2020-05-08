@@ -18,6 +18,14 @@ public class EmbeddedMessageSender extends Thread {
     // Имя очереди
     private String queueName;
 
+    public BrokerService getBrokerService() {
+        return brokerService;
+    }
+
+    public void setBrokerService(BrokerService brokerService) {
+        this.brokerService = brokerService;
+    }
+
     public String getBrokerName() {
         return brokerName;
     }
@@ -45,7 +53,6 @@ public class EmbeddedMessageSender extends Thread {
 
             brokerService.addConnector("vm://henry");
 
-            brokerService.start();
 
             ConnectionFactory confactory = new ActiveMQConnectionFactory("vm://" + brokerName);
 
@@ -71,14 +78,14 @@ public class EmbeddedMessageSender extends Thread {
 
             for (int i = 0; i < 100; i++) {
                 producer.send(messageOne);
-                //System.out.println("SEND_QUEUE printing: " + messageOne.getText());
+                System.out.println("SEND_QUEUE printing: " + messageOne.getText());
                 session.commit();
 
             }
 
             connection.close();
             System.out.println("End sending: " + dateFormat.format(new Date()));
-            brokerService.stop();
+
 
         } catch (Exception e) {
             e.printStackTrace();
