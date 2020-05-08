@@ -4,64 +4,121 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-       <bean id="embeddedMessageSender" class="SpringInAction.components.EmbeddedMessageSender" scope="prototype" init-method="sendFiveMessages">
+<!-- Внутренний брокер -->
+       <bean id="embeddedMessageSender" class="SpringInAction.components.EmbeddedMessageSender" scope="prototype">
            <property name="brokerService" ref="brokerService"/>
            <property name="brokerName" value="henry"/>
            <property name="queueName" value="SEND_QUEUE"/>
        </bean>
 
-       <bean id="embeddedMessageSaver0" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="getFiveMessages">
+       <bean id="embeddedMessageSaver0" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
            <property name="brokerName" value="henry"/>
            <property name="queueName" value="SEND_QUEUE"/>
        </bean>
 
-      <bean id="embeddedMessageSaver1" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+      <bean id="embeddedMessageSaver1" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver2" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver2" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver3" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver3" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver4" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver4" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver5" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver5" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver6" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver6" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver7" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver7" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver8" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver8" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
-    <bean id="embeddedMessageSaver9" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype" init-method="" destroy-method="">
+    <bean id="embeddedMessageSaver9" class="SpringInAction.components.EmbeddedMessageSaver" scope="prototype">
         <property name="brokerName" value="henry"/>
         <property name="queueName" value="SEND_QUEUE"/>
     </bean>
 
 
        <bean id="brokerService" class="org.apache.activemq.broker.BrokerService"/>
+
+ <!-- Внешний брокер -->
+    <bean id="MessageSender" class="SpringInAction.components.MessageSender" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver0" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver1" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver2" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver3" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver4" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver5" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver6" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver7" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver8" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
+
+    <bean id="MessageSaver9" class="SpringInAction.components.MessageSaver" scope="prototype">
+        <property name="url" value="failover://tcp://localhost:61616"/>
+        <property name="queueName" value="SEND_QUEUE"/>
+    </bean>
 
 
  </beans>
